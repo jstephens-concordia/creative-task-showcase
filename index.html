@@ -14,7 +14,6 @@
       --border: rgba(255,255,255,0.14);
       --accent: #7bd3ff;
       --accent2: #9cffc8;
-      --danger: #ff6b6b;
       --shadow: 0 18px 55px rgba(0,0,0,0.45);
       --radius: 16px;
     }
@@ -61,63 +60,109 @@
       max-width: 92ch;
     }
 
+    .controls {
+      display: grid;
+      gap: 14px;
+      margin: 20px 0 18px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+    }
+
     .tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin: 18px 0 6px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0;
     }
 
     .tab {
       appearance: none;
-      border: 1px solid var(--border);
-      border-bottom: none;
+      border: 1px solid rgba(255,255,255,0.18);
       background: rgba(255,255,255,0.04);
-      color: var(--muted);
-      padding: 11px 18px;
-      border-radius: 12px 12px 0 0;
-      font-size: 15px;
-      font-weight: 600;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 650;
       cursor: pointer;
-      letter-spacing: -0.01em;
-      position: relative;
-      top: 1px;
     }
 
     .tab:hover {
       background: rgba(255,255,255,0.08);
-      color: var(--text);
+      border-color: rgba(255,255,255,0.28);
     }
 
     .tab.active {
-      background: linear-gradient(180deg, rgba(123,211,255,0.18), rgba(123,211,255,0.06));
       border-color: rgba(123,211,255,0.55);
+      background: rgba(123,211,255,0.14);
+      box-shadow: inset 0 0 0 1px rgba(123,211,255,0.16);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .searchWrap {
+      display: grid;
+      gap: 6px;
+      min-width: min(100%, 360px);
+      flex: 1 1 280px;
+    }
+
+    .searchWrap label {
+      font-size: 13px;
+      color: var(--muted2);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .searchInput {
+      width: 100%;
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.18);
       color: var(--text);
+      padding: 11px 13px;
+      border-radius: 12px;
+      font-size: 15px;
+      outline: none;
     }
 
-    .tab .badge {
-      display: inline-block;
-      font-size: 11px;
-      padding: 2px 7px;
-      margin-left: 6px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.12);
-      color: var(--muted);
-      font-weight: 600;
+    .searchInput:focus {
+      border-color: rgba(123,211,255,0.55);
+      box-shadow: 0 0 0 3px rgba(123,211,255,0.12);
     }
 
-    .tab.active .badge {
-      background: rgba(123,211,255,0.25);
-      color: var(--text);
-    }
-
-    .unitIntro {
-      color: var(--muted);
+    .resultMeta {
       font-size: 14px;
-      margin: 14px 0 4px;
-      line-height: 1.5;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .sectionIntro {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .sectionTitle {
+      margin: 0;
+      font-size: clamp(18px, 2.2vw, 25px);
+      letter-spacing: -0.02em;
+    }
+
+    .sectionDescription {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 84ch;
     }
 
     .grid {
@@ -125,7 +170,6 @@
       gap: 18px;
       grid-template-columns: 1fr;
       align-items: start;
-      margin-top: 14px;
     }
 
     @media (min-width: 980px) {
@@ -156,7 +200,7 @@
     .nameRow {
       display: flex;
       flex-wrap: wrap;
-      align-items: baseline;
+      align-items: center;
       gap: 10px;
     }
 
@@ -167,10 +211,29 @@
       letter-spacing: -0.01em;
     }
 
-    .projectTitle {
-      font-size: 13px;
-      color: var(--accent);
-      font-weight: 600;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .badge.unit6 {
+      color: rgba(156,255,200,0.95);
+      background: rgba(156,255,200,0.10);
+      border-color: rgba(156,255,200,0.24);
+    }
+
+    .badge.unit4 {
+      color: rgba(123,211,255,0.95);
+      background: rgba(123,211,255,0.10);
+      border-color: rgba(123,211,255,0.24);
     }
 
     .summary {
@@ -208,7 +271,10 @@
       font-size: 14px;
     }
 
-    .embedBlock { display: grid; gap: 10px; }
+    .embedBlock {
+      display: grid;
+      gap: 10px;
+    }
 
     .embedShell {
       border-radius: 12px;
@@ -235,9 +301,30 @@
       pointer-events: none;
       opacity: 0;
       transition: opacity 160ms ease;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.18)),
+        radial-gradient(520px 240px at 50% 24%, rgba(123,211,255,0.09), transparent 60%);
     }
 
-    .embedOverlay.show { opacity: 1; }
+    .embedOverlay.show {
+      opacity: 1;
+    }
+
+    .embedOverlayText {
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .embedOverlayText p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 28ch;
+      line-height: 1.45;
+    }
 
     .spinner {
       width: 38px;
@@ -248,7 +335,9 @@
       animation: spin 900ms linear infinite;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
 
     .buttons {
       display: flex;
@@ -283,24 +372,48 @@
       border-color: rgba(123,211,255,0.55);
       background: rgba(123,211,255,0.12);
     }
-    .btn.primary:hover { background: rgba(123,211,255,0.18); }
+
+    .btn.primary:hover {
+      background: rgba(123,211,255,0.18);
+    }
 
     .btn.good {
       border-color: rgba(156,255,200,0.55);
       background: rgba(156,255,200,0.12);
     }
-    .btn.good:hover { background: rgba(156,255,200,0.18); }
 
-    .btn.danger {
-      border-color: rgba(255,107,107,0.55);
-      background: rgba(255,107,107,0.12);
+    .btn.good:hover {
+      background: rgba(156,255,200,0.18);
     }
-    .btn.danger:hover { background: rgba(255,107,107,0.18); }
+
+    .btn.disabled,
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.58;
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.12);
+    }
 
     .finePrint {
       font-size: 12px;
       color: var(--muted2);
       line-height: 1.35;
+    }
+
+    .emptyState {
+      border-radius: var(--radius);
+      border: 1px dashed rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.03);
+      padding: 24px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .smallNote {
+      display: inline-block;
+      margin-left: 8px;
+      color: var(--muted2);
+      font-size: 12px;
     }
 
     .modalBackdrop {
@@ -314,7 +427,9 @@
       z-index: 999;
     }
 
-    .modalBackdrop.show { display: flex; }
+    .modalBackdrop.show {
+      display: flex;
+    }
 
     .modal {
       width: min(1100px, 98vw);
@@ -338,9 +453,20 @@
       background: rgba(255,255,255,0.05);
     }
 
-    .modalTitle { display: grid; gap: 2px; }
-    .modalTitle strong { font-size: 14px; letter-spacing: -0.01em; }
-    .modalTitle span { font-size: 12px; color: var(--muted2); }
+    .modalTitle {
+      display: grid;
+      gap: 2px;
+    }
+
+    .modalTitle strong {
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .modalTitle span {
+      font-size: 12px;
+      color: var(--muted2);
+    }
 
     .modalActions {
       display: flex;
@@ -350,7 +476,10 @@
       justify-content: flex-end;
     }
 
-    .modalBody { background: rgba(0,0,0,0.25); }
+    .modalBody {
+      background: rgba(0,0,0,0.25);
+    }
+
     .modalBody iframe {
       width: 100%;
       height: 100%;
@@ -365,17 +494,32 @@
       <h1 class="title">Foundations of Computer Science Creative Task Showcase</h1>
       <p class="subtitle">
         Student projects from Foundations of Computer Science (CMU CS Academy CS1: Introduction to Programming).
-        Each card includes a short project summary, a quick interaction guide, and the embedded project.
-        Use the PDF button to open the student writeup in a large viewer.
+        The newest Unit 6 creative tasks are shown by default, while Unit 4 remains available as an archive tab.
+        Each card includes a short project summary, a quick interaction guide, and an embedded project preview.
       </p>
     </header>
 
-    <div class="tabs" role="tablist">
-      <button class="tab active" type="button" data-unit="6" role="tab">Unit 6 Creative Task <span class="badge">Latest</span></button>
-      <button class="tab" type="button" data-unit="4" role="tab">Unit 4 Creative Task</button>
-    </div>
+    <section class="controls" aria-label="Showcase controls">
+      <div class="tabs" id="tabs" role="tablist" aria-label="Unit selector">
+        <button class="tab active" type="button" role="tab" aria-selected="true" data-unit="unit6">Unit 6 Creative Tasks</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-unit="unit4">Unit 4 Creative Tasks</button>
+      </div>
 
-    <p class="unitIntro" id="unitIntro"></p>
+      <div class="toolbar">
+        <div class="searchWrap">
+          <label for="searchInput">Find a student or project</label>
+          <input class="searchInput" id="searchInput" type="search" placeholder="Search by name, project type, or interaction" />
+        </div>
+        <div class="resultMeta" id="resultMeta" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="sectionIntro" aria-live="polite">
+      <h2 class="sectionTitle" id="sectionTitle">Unit 6 Creative Tasks</h2>
+      <p class="sectionDescription" id="sectionDescription">
+        Newest projects are shown by default so the latest work is easier to find.
+      </p>
+    </section>
 
     <main class="grid" id="grid" aria-label="Project list"></main>
   </div>
@@ -399,329 +543,324 @@
   </div>
 
   <script>
-    // =========================================================================
-    // UNIT 6 PROJECTS
-    // =========================================================================
-    const unit6 = [
+    const showcase = {
+  "unit6": {
+    "label": "Unit 6 Creative Tasks",
+    "description": "Newest projects are shown by default so the latest work is easier to find. Switch to Unit 4 any time to browse the earlier set.",
+    "projects": [
       {
-        first: 'Jesse', lastInitial: 'C',
-        projectTitle: 'Sky Jumper',
-        summary: 'A two-level obstacle-dodging game where you toggle vertical direction to collect coins and avoid moving obstacles, then advance to a faster Level 2.',
-        howTo: [
-          'Hold R to move the character to the ready position, then press E to begin.',
-          'Press Space to toggle up/down and dodge obstacles while collecting coins.',
-          'Collect 10 coins to advance to Level 2. Press W to restart after game over.'
+        "first": "Jessica",
+        "lastInitial": "J",
+        "summary": "An interactive story scene that starts behind a curtain, lets you hunt birds and catch a rabbit, then transitions indoors for a cooking sequence.",
+        "howTo": [
+          "Click to raise the curtain and reveal the outdoor scene.",
+          "Click the moving birds and the rabbit to collect supplies.",
+          "After the scene fades, click the light switch to turn on the kitchen and continue."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/redChicken771539',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/redChicken771539/embed',
-        pdf: 'pdfs/JesseC_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/silverDolphin576063",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/silverDolphin576063/embed",
+        "pdf": "pdfs/JessicaJ_Unit6_CreativeTask.pdf"
       },
       {
-        first: 'Jason', lastInitial: 'C',
-        projectTitle: 'Minesweeper',
-        summary: 'A recreation of the classic Minesweeper game on a 9x9 grid with hidden mines, numbered hint tiles indicating adjacent mines, and a running timer.',
-        howTo: [
-          'Click any covered tile to reveal what is underneath.',
-          'Numbers show how many mines are in the eight neighboring tiles.',
-          'Avoid clicking tiles that hide a mine — the timer counts up from your first move.'
+        "first": "Harry",
+        "lastInitial": "J",
+        "summary": "An Asteroids-inspired arcade game with ship rotation, thrust-based movement, lasers, drifting physics, and asteroid collisions.",
+        "howTo": [
+          "Use Left and Right to rotate the ship.",
+          "Hold Up to thrust and tap Space to fire.",
+          "Avoid the asteroids and shoot them before they hit you."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/turquoisePanda760233',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/turquoisePanda760233/embed',
-        pdf: 'pdfs/JasonC_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/yellowGreenEagle527450",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/yellowGreenEagle527450/embed",
+        "pdf": "pdfs/HarryJ_Unit6_CreativeTask.pdf"
       },
       {
-        first: 'Jessica', lastInitial: 'J',
-        projectTitle: 'A Day from the Window',
-        summary: 'An interactive storybook scene: roll up the curtains, shoot birds and catch a rabbit for dinner, then transition indoors to cook a stew as the day ends.',
-        howTo: [
-          'Click repeatedly to roll up the curtain and reveal the outdoor scene.',
-          'Click flying birds to shoot them, then click them on the ground to collect.',
-          'Click the rabbit to catch it, then click the light switch once the scene darkens.'
+        "first": "Stephen",
+        "lastInitial": "J",
+        "summary": "A two-player strategy board game where red and blue alternate timed turns placing pieces, with a special clear skill that can wipe your own board.",
+        "howTo": [
+          "Watch the turn indicator to see whether blue or red is active.",
+          "Move the mouse and click inside the board to place pieces during your turn.",
+          "Use your clear skill when its button becomes available."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/silverDolphin576063',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/silverDolphin576063/embed',
-        pdf: 'pdfs/JessicaJ_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/chartreuseDolphin523579",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/chartreuseDolphin523579/embed",
+        "pdf": "pdfs/StephenJ_Unit6_CreativeTask.pdf"
       },
       {
-        first: 'Harry', lastInitial: 'J',
-        projectTitle: 'Asteroids',
-        summary: 'A recreation of the 1979 arcade classic Asteroids with inertia-based flight, wraparound physics, firing lasers, lives, and a score counter.',
-        howTo: [
-          'Use Left and Right arrows to rotate the ship; Up to thrust forward.',
-          'Press Space to fire a laser in the direction the ship is facing.',
-          'Destroy asteroids to score points. You have 3 lives before Game Over.'
+        "first": "Jesse",
+        "lastInitial": "C",
+        "summary": "A two-level obstacle-dodging game called Sky Jumper where you steer a vertical-moving character, collect coins, and survive faster obstacles in Level 2.",
+        "howTo": [
+          "Hold R to move the character into the ready position, then press E to start.",
+          "Press Space to begin movement and flip vertical direction.",
+          "Collect coins and avoid obstacles; press W to restart after game over."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/yellowGreenEagle527450',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/yellowGreenEagle527450/embed',
-        pdf: 'pdfs/HarryJ_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/redChicken771539",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/redChicken771539/embed",
+        "pdf": "pdfs/JesseC_Unit6_CreativeTask.pdf"
       },
       {
-        first: 'Stephen', lastInitial: 'J',
-        projectTitle: 'Piece Placement Duel',
-        summary: 'A two-player strategy game where red and blue take turns placing pieces on a board, with a "clear" skill that resets your pieces and a global countdown timer.',
-        howTo: [
-          'Players alternate turns every 6 seconds (indicated by the color bar).',
-          'Click an empty cell on the board to place one of your pieces.',
-          'Click your green skill bar to clear your own pieces and free up space.'
+        "first": "Geonwoo",
+        "lastInitial": "L",
+        "summary": "A three-level bounce-ball platform game where you choose a level, ride moving platforms, dodge obstacles, and reach the crown to win.",
+        "howTo": [
+          "Click a level square to begin.",
+          "Use A and D to move left or right; use W and S to adjust the ball’s vertical motion.",
+          "Stay on safe platforms, avoid moving obstacles, and reach the crown."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/chartreuseDolphin523579',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/chartreuseDolphin523579/embed',
-        pdf: 'pdfs/StephenJ_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/rosyBrownDeer367423",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/rosyBrownDeer367423/embed",
+        "pdf": "pdfs/GeonwooL_Unit6_CreativeTask.pdf"
       },
       {
-        first: 'Geonwoo', lastInitial: 'L',
-        projectTitle: 'Bounce Ball',
-        summary: 'A three-level platformer where a bouncing ball must navigate safe platforms and moving obstacles to reach the crown at the end of each level.',
-        howTo: [
-          'Click one of the three colored level squares (red, blue, or purple) to start.',
-          'Use A and D to move horizontally; W to jump up and S to drop faster.',
-          'Avoid the moving black obstacles and reach the yellow crown to win.'
+        "first": "Michael",
+        "lastInitial": "W",
+        "summary": "A baseball at-bat simulation based on the World Baseball Classic, where pitch placement determines whether the batter sends the ball out or strikes out.",
+        "howTo": [
+          "Click once inside the strike zone to choose the pitch location.",
+          "Watch the batter swing and the ball travel.",
+          "Try different pitch spots to see whether the result is a home run or a strikeout."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/rosyBrownDeer367423',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/rosyBrownDeer367423/embed',
-        pdf: 'pdfs/GeonwooL_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/seaGreenEagle703829",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/seaGreenEagle703829/embed",
+        "pdf": "pdfs/MichaelW_Unit6_CreativeTask.pdf"
       },
       {
-        first: 'Jack', lastInitial: 'L',
-        projectTitle: '2-Player Fighter',
-        summary: 'A local two-player fighting game with health bars, a round timer, and punching fists that travel out and retract on each attack.',
-        howTo: [
-          'Player 1: WASD to move, Space to punch. Player 2: Arrow keys to move, C to punch.',
-          'Land punches on the other player to drain their health bar.',
-          'Whoever has more health when the timer runs out wins.'
+        "first": "Coco",
+        "lastInitial": "L",
+        "summary": "A moonlit lake scene with a moving boat, drifting constellations, rotating stars, and click-to-add starlight.",
+        "howTo": [
+          "Use W, A, S, and D to move the boat.",
+          "Hold Left or Right to rotate the boat and spin the constellations.",
+          "Click anywhere in the sky to add extra stars."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/rosyBrownOwl946187',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/rosyBrownOwl946187/embed',
-        pdf: 'pdfs/JackL_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/tomatoBear498217",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/tomatoBear498217/embed",
+        "pdf": "pdfs/CocoL_Unit6_CreativeTask.pdf"
       },
       {
-        first: 'Coco', lastInitial: 'L',
-        projectTitle: 'Night Sky with Constellations',
-        summary: 'A dreamy nighttime scene featuring a boat on moonlit water beneath drifting constellations (Canis Major, Canis Minor, Monoceros) that rotate and wrap around the sky.',
-        howTo: [
-          'Hold Left or Right arrow to spin the constellations and boat in opposite directions.',
-          'Use WASD to move the boat around the water.',
-          'Click anywhere in the sky to add your own rotating stars to the scene.'
+        "first": "Jason",
+        "lastInitial": "C",
+        "summary": "A Minesweeper-style puzzle board with hidden bombs, numbered tiles, a bomb counter, and a running timer.",
+        "howTo": [
+          "Click tiles to reveal what is underneath.",
+          "Avoid hidden bomb squares.",
+          "Use the numbered clues to decide which tiles are safe."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/tomatoBear498217',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/tomatoBear498217/embed',
-        pdf: 'pdfs/CocoL_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/turquoisePanda760233",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/turquoisePanda760233/embed",
+        "pdf": null,
+        "pdfNote": "PDF coming soon"
       },
       {
-        first: 'Michael', lastInitial: 'W',
-        projectTitle: '2026 WBC At-Bat Simulator',
-        summary: 'A baseball at-bat simulator with a full scoreboard, pitching strike zone, and an animated batter swing that results in either a home run or a strikeout.',
-        howTo: [
-          'Click a square inside the pitch grid to throw the ball to that location.',
-          'Watch the batter swing automatically as the ball reaches home plate.',
-          'Pitches in the hot zone become home runs; everywhere else triggers a strikeout.'
+        "first": "Andy",
+        "lastInitial": "Z",
+        "summary": "A harder version of Pong with accelerating rallies, an AI opponent, and random speed-boost power-ups.",
+        "howTo": [
+          "Use Up and Down to move your paddle.",
+          "Return the ball as long as you can while its speed increases.",
+          "Race the bot to six points and watch for the power-up."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/seaGreenEagle703829',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/seaGreenEagle703829/embed',
-        pdf: 'pdfs/MichaelW_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/khakiCat529967",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/khakiCat529967/embed",
+        "pdf": "pdfs/AndyZ_Unit6_CreativeTask.pdf"
       },
       {
-        first: 'Andy', lastInitial: 'Z',
-        projectTitle: 'Accelerating Pong',
-        summary: 'A player-vs-bot Pong game where the ball accelerates with every hit, motion-blur shadows trail the ball, and randomly spawning power-ups supercharge its speed.',
-        howTo: [
-          'Press Up and Down arrow keys to move your paddle on the left side.',
-          'Touch the glowing power-up with the ball to multiply its speed.',
-          'First side to reach 6 points wins the match.'
+        "first": "Jack",
+        "lastInitial": "L",
+        "summary": "A two-player 2.5D fighting game where each player can move in four directions and punch to drain the other player’s health before time runs out.",
+        "howTo": [
+          "Player 1 uses A, D, W, and S to move and Space to punch.",
+          "Player 2 uses Left, Right, Up, and Down to move and C to punch.",
+          "Keep attacking until one health bar runs out or the timer decides the winner."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/khakiCat529967',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/khakiCat529967/embed',
-        pdf: 'pdfs/AndyZ_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/rosyBrownOwl946187",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/rosyBrownOwl946187/embed",
+        "pdf": "pdfs/JackL_Unit6_CreativeTask.pdf"
       },
       {
-        first: 'William', lastInitial: 'Z',
-        projectTitle: 'Bike Assembly Animation',
-        summary: 'A mechanical assembly animation where the fork, shock, transmission, and both detailed wheels slide into place one by one to build a complete bike.',
-        howTo: [
-          'Watch as each bike component animates into position automatically.',
-          'The fork and shock move first, followed by the transmission and both wheels.',
-          'Notice the detailed 36-spoke wheels created with a for loop.'
+        "first": "William",
+        "lastInitial": "Z",
+        "summary": "An animated bike-assembly scene where wheels, fork, shock, and transmission slide into place one piece at a time.",
+        "howTo": [
+          "Let the animation run.",
+          "Watch the parts move into position in sequence.",
+          "Reload the project if you want to replay the assembly."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/forestGreenFrog325431',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/forestGreenFrog325431/embed',
-        pdf: 'pdfs/WilliamZ_Unit6_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/forestGreenFrog325431",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/forestGreenFrog325431/embed",
+        "pdf": "pdfs/WilliamZ_Unit6_CreativeTask.pdf"
       }
-    ];
-
-    // =========================================================================
-    // UNIT 4 PROJECTS (preserved from original site)
-    // =========================================================================
-    const unit4 = [
+    ]
+  },
+  "unit4": {
+    "label": "Unit 4 Creative Tasks",
+    "description": "Earlier creative tasks are kept here as an archive, with the same student cards, project previews, and PDF access.",
+    "projects": [
       {
-        first: 'Jessica', lastInitial: 'J',
-        summary: 'An interactive True or False quiz with a start screen, optional hint popup, score tracking, and a running timer.',
-        howTo: [
-          'Click Start to begin.',
-          'Click the True or False answer box for each question.',
-          'Hover over the small question mark for a hint, then click to close it.'
+        "first": "Jessica",
+        "lastInitial": "J",
+        "summary": "An interactive True or False quiz with a start screen, optional hint popup, score tracking, and a running timer.",
+        "howTo": [
+          "Click Start to begin.",
+          "Click the True or False answer box for each question.",
+          "Hover over the small question mark for a hint, then click to close it."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/turquoiseGiraffe318576',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/turquoiseGiraffe318576/embed',
-        pdf: 'pdfs/JessicaJ_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/turquoiseGiraffe318576",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/turquoiseGiraffe318576/embed",
+        "pdf": "pdfs/JessicaJ_CreativeTask.pdf"
       },
       {
-        first: 'Harry', lastInitial: 'J',
-        summary: 'A five-lane racing game with randomized movement and a podium results screen at the end of the race.',
-        howTo: [
-          'Click Start Game to begin the race.',
-          'Optional: press keys 1 through 5 to boost the corresponding runner.',
-          'Watch the finish order and podium results when the race ends.'
+        "first": "Harry",
+        "lastInitial": "J",
+        "summary": "A five-lane racing game with randomized movement and a podium results screen at the end of the race.",
+        "howTo": [
+          "Click Start Game to begin the race.",
+          "Optional: press keys 1 through 5 to boost the corresponding runner.",
+          "Watch the finish order and podium results when the race ends."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/sandyBrownTurtle915451',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/sandyBrownTurtle915451/embed',
-        pdf: 'pdfs/HarryJ_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/sandyBrownTurtle915451",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/sandyBrownTurtle915451/embed",
+        "pdf": "pdfs/HarryJ_CreativeTask.pdf"
       },
       {
-        first: 'Stephen', lastInitial: 'J',
-        summary: 'A Pac-Man inspired game-machine prototype featuring arrow-key movement, obstacles, and an on-screen menu interface.',
-        howTo: [
-          'Use the arrow keys to move the character.',
-          'Click Menu to open the menu panel.',
-          'Click Go Back to close the menu panel.'
+        "first": "Stephen",
+        "lastInitial": "J",
+        "summary": "A Pac-Man inspired game-machine prototype featuring arrow-key movement, obstacles, and an on-screen menu interface.",
+        "howTo": [
+          "Use the arrow keys to move the character.",
+          "Click Menu to open the menu panel.",
+          "Click Go Back to close the menu panel."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/slateGrayAlligator715983',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/slateGrayAlligator715983/embed',
-        pdf: 'pdfs/StephenJ_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/slateGrayAlligator715983",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/slateGrayAlligator715983/embed",
+        "pdf": "pdfs/StephenJ_CreativeTask.pdf"
       },
       {
-        first: 'Jesse', lastInitial: 'C',
-        summary: 'A basketball shooting game where you move a player around the court, take shots, and score 2 or 3 points based on distance.',
-        howTo: [
-          'Use the arrow keys to move the player (dribbling occurs while moving).',
-          'Press Space to shoot.',
-          'Stay in bounds to avoid the Out of Bounds warning.'
+        "first": "Jesse",
+        "lastInitial": "C",
+        "summary": "A basketball shooting game where you move a player around the court, take shots, and score 2 or 3 points based on distance.",
+        "howTo": [
+          "Use the arrow keys to move the player (dribbling occurs while moving).",
+          "Press Space to shoot.",
+          "Stay in bounds to avoid the Out of Bounds warning."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/pinkPig203808',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/pinkPig203808/embed',
-        pdf: 'pdfs/JesseC_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/pinkPig203808",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/pinkPig203808/embed",
+        "pdf": "pdfs/JesseC_CreativeTask.pdf"
       },
       {
-        first: 'Geonwoo', lastInitial: 'L',
-        summary: 'A three-level airplane challenge where you dodge hazards and collect stars to build energy and win.',
-        howTo: [
-          'Click a level square to start (yellow, light blue, or gray).',
-          'Use W, A, S, D to move the airplane.',
-          'Avoid the hazard blocks and collect stars to increase energy.'
+        "first": "Geonwoo",
+        "lastInitial": "L",
+        "summary": "A three-level airplane challenge where you dodge hazards and collect stars to build energy and win.",
+        "howTo": [
+          "Click a level square to start (yellow, light blue, or gray).",
+          "Use W, A, S, D to move the airplane.",
+          "Avoid the hazard blocks and collect stars to increase energy."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/cyanLobster492898',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/cyanLobster492898/embed',
-        pdf: 'pdfs/GeonwooL_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/cyanLobster492898",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/cyanLobster492898/embed",
+        "pdf": "pdfs/GeonwooL_CreativeTask.pdf"
       },
       {
-        first: 'Michael', lastInitial: 'W',
-        summary: 'A simplified Tetris-style stacking game where you position and rotate falling block shapes to maximize your score.',
-        howTo: [
-          'Press Down repeatedly to move the current block downward.',
-          'Use Left and Right to move the block horizontally.',
-          'Use Up to rotate the current block.'
+        "first": "Michael",
+        "lastInitial": "W",
+        "summary": "A simplified Tetris-style stacking game where you position and rotate falling block shapes to maximize your score.",
+        "howTo": [
+          "Press Down repeatedly to move the current block downward.",
+          "Use Left and Right to move the block horizontally.",
+          "Use Up to rotate the current block."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/greenYellowKitten432175',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/greenYellowKitten432175/embed',
-        pdf: 'pdfs/MichaelW_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/greenYellowKitten432175",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/greenYellowKitten432175/embed",
+        "pdf": "pdfs/MichaelW_CreativeTask.pdf"
       },
       {
-        first: 'Coco', lastInitial: 'L',
-        summary: 'An underwater scene with a crab and fish that move across the canvas in response to keyboard input.',
-        howTo: [
-          'Press Left or Right to move the characters across the scene.',
-          'Try moving the crab toward the hiding spot and watch the fish direction change.'
+        "first": "Coco",
+        "lastInitial": "L",
+        "summary": "An underwater scene with a crab and fish that move across the canvas in response to keyboard input.",
+        "howTo": [
+          "Press Left or Right to move the characters across the scene.",
+          "Try moving the crab toward the hiding spot and watch the fish direction change."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/blueWolf098248',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/blueWolf098248/embed',
-        pdf: 'pdfs/CocoL_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/blueWolf098248",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/blueWolf098248/embed",
+        "pdf": "pdfs/CocoL_CreativeTask.pdf"
       },
       {
-        first: 'Jason', lastInitial: 'C',
-        summary: 'A fast-paced driving game: steer your car to collect falling coins while the road scrolls, and try to reach the win target.',
-        howTo: [
-          'Use W, A, S, D to move the car.',
-          'Collect as many coins as possible.',
-          'Try to reach the win message before a coin reaches the bottom.'
+        "first": "Jason",
+        "lastInitial": "C",
+        "summary": "A fast-paced driving game: steer your car to collect falling coins while the road scrolls, and try to reach the win target.",
+        "howTo": [
+          "Use W, A, S, D to move the car.",
+          "Collect as many coins as possible.",
+          "Try to reach the win message before a coin reaches the bottom."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/blueGoldfish046858',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/blueGoldfish046858/embed',
-        pdf: 'pdfs/JasonC_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/blueGoldfish046858",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/blueGoldfish046858/embed",
+        "pdf": "pdfs/JasonC_CreativeTask.pdf"
       },
       {
-        first: 'Andy', lastInitial: 'Z',
-        summary: 'A maze-path collection game where you stay on the path, collect all pellets, and then reach the finish to win.',
-        howTo: [
-          'Use the arrow keys to move the character.',
-          'Collect all three pellets.',
-          'Stay on the gray path; leaving the path ends the game.'
+        "first": "Andy",
+        "lastInitial": "Z",
+        "summary": "A maze-path collection game where you stay on the path, collect all pellets, and then reach the finish to win.",
+        "howTo": [
+          "Use the arrow keys to move the character.",
+          "Collect all three pellets.",
+          "Stay on the gray path; leaving the path ends the game."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/purpleFrog546117',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/purpleFrog546117/embed',
-        pdf: 'pdfs/AndyZ_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/purpleFrog546117",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/purpleFrog546117/embed",
+        "pdf": "pdfs/AndyZ_CreativeTask.pdf"
       },
       {
-        first: 'Jack', lastInitial: 'L',
-        summary: 'A timed target-shooting game where you move, rotate your aim, fire shots, and earn a final performance rank.',
-        howTo: [
-          'Hold W, A, S, D to move.',
-          'Press J and L to rotate your direction.',
-          'Press Space to shoot at the target.'
+        "first": "Jack",
+        "lastInitial": "L",
+        "summary": "A timed target-shooting game where you move, rotate your aim, fire shots, and earn a final performance rank.",
+        "howTo": [
+          "Hold W, A, S, D to move.",
+          "Press J and L to rotate your direction.",
+          "Press Space to shoot at the target."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/brownKangaroo027674',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/brownKangaroo027674/embed',
-        pdf: 'pdfs/JackL_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/brownKangaroo027674",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/brownKangaroo027674/embed",
+        "pdf": "pdfs/JackL_CreativeTask.pdf"
       },
       {
-        first: 'William', lastInitial: 'Z',
-        summary: 'A time-control scene with a clock and moving sun or moon, where you can scrub time forward or backward and toggle day or night.',
-        howTo: [
-          'Hold the Right or Left arrow key to move time forward or backward.',
-          'Press Space to toggle between day and night.',
-          'Observe the clock hand and sky object moving together.'
+        "first": "William",
+        "lastInitial": "Z",
+        "summary": "A time-control scene with a clock and moving sun or moon, where you can scrub time forward or backward and toggle day or night.",
+        "howTo": [
+          "Hold the Right or Left arrow key to move time forward or backward.",
+          "Press Space to toggle between day and night.",
+          "Observe the clock hand and sky object moving together."
         ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/yellowHorse961044',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/yellowHorse961044/embed',
-        pdf: 'pdfs/WilliamZ_CreativeTask.pdf'
+        "shareUrl": "https://academy.cs.cmu.edu/sharing/yellowHorse961044",
+        "embedUrl": "https://academy.cs.cmu.edu/sharing/yellowHorse961044/embed",
+        "pdf": "pdfs/WilliamZ_CreativeTask.pdf"
       }
-    ];
-
-    const unitData = {
-      '6': {
-        projects: unit6,
-        intro: 'Unit 6 projects introduce Groups, custom properties (dx/dy), and event functions like onStep — enabling richer animations, multi-shape objects, and more dynamic gameplay. Set the badge counts and apply proper student order.'
-      },
-      '4': {
-        projects: unit4,
-        intro: 'Unit 4 projects focus on keyboard and mouse event handling, shape methods, and building the first interactive games of the course.'
-      }
-    };
-
-    // Badge counts
-    document.querySelectorAll('.tab').forEach(t => {
-      const u = t.dataset.unit;
-      const count = unitData[u].projects.length;
-      const existing = t.querySelector('.badge');
-      if (!existing) {
-        const b = document.createElement('span');
-        b.className = 'badge';
-        b.textContent = count + ' projects';
-        t.appendChild(b);
-      } else {
-        // For Unit 6 which already has "Latest", append count after
-        existing.textContent = 'Latest · ' + count;
-      }
-    });
-
-    // Update Unit 6 intro to something accurate (not placeholder)
-    unitData['6'].intro = 'Unit 6 introduces Groups, custom properties (like dx/dy), and onStep animation — so these projects feature richer multi-shape objects, continuous motion, and more complex interactive gameplay than Unit 4.';
+    ]
+  }
+};
 
     const grid = document.getElementById('grid');
-    const unitIntro = document.getElementById('unitIntro');
+    const tabs = document.getElementById('tabs');
+    const searchInput = document.getElementById('searchInput');
+    const resultMeta = document.getElementById('resultMeta');
+    const sectionTitle = document.getElementById('sectionTitle');
+    const sectionDescription = document.getElementById('sectionDescription');
+
     const pdfBackdrop = document.getElementById('pdfBackdrop');
     const pdfFrame = document.getElementById('pdfFrame');
     const pdfTitle = document.getElementById('pdfTitle');
+    const pdfSubtitle = document.getElementById('pdfSubtitle');
     const pdfOpenNew = document.getElementById('pdfOpenNew');
     const pdfClose = document.getElementById('pdfClose');
+
+    let activeUnit = 'unit6';
+    let activeQuery = '';
+    let observer = null;
 
     function slugify(s) {
       return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -736,151 +875,247 @@
         .replaceAll("'", '&#039;');
     }
 
-    function render(unit) {
-      const { projects, intro } = unitData[unit];
-      unitIntro.textContent = intro;
-      grid.innerHTML = '';
-
-      for (const p of projects) {
-        const displayName = `${p.first} ${p.lastInitial}.`;
-        const iframeId = `game-u${unit}-${slugify(displayName)}`;
-        const titleLine = p.projectTitle
-          ? `<span class="projectTitle">${escapeHtml(p.projectTitle)}</span>`
-          : '';
-
-        const card = document.createElement('section');
-        card.className = 'card';
-
-        card.innerHTML = `
-          <div class="cardHeader">
-            <div class="nameRow">
-              <h2 class="studentName">${escapeHtml(displayName)}</h2>
-              ${titleLine}
-            </div>
-            <p class="summary">${escapeHtml(p.summary)}</p>
-          </div>
-
-          <div class="cardBody">
-            <div class="howto">
-              <h4>How to interact</h4>
-              <ul>
-                ${(p.howTo || []).map(x => `<li>${escapeHtml(x)}</li>`).join('')}
-              </ul>
-              <div style="height: 10px"></div>
-              <div class="buttons">
-                <button class="btn good" type="button" data-action="view-pdf" data-pdf="${escapeHtml(p.pdf)}" data-title="${escapeHtml(displayName)}">
-                  📄 View PDF
-                </button>
-                <a class="btn" href="${escapeHtml(p.pdf)}" target="_blank" rel="noopener">
-                  ↗ Open PDF
-                </a>
-              </div>
-            </div>
-
-            <div class="embedBlock">
-              <div class="embedShell">
-                <div class="embedOverlay show" id="${iframeId}-overlay" aria-hidden="true"><div class="spinner"></div></div>
-                <iframe
-                  id="${iframeId}"
-                  title="${escapeHtml(displayName)} project"
-                  src="about:blank"
-                  data-src="${escapeHtml(p.embedUrl)}"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  allowfullscreen
-                ></iframe>
-              </div>
-
-              <div class="buttons">
-                <button class="btn primary" type="button" data-action="reload" data-iframe="${iframeId}">
-                  ⟳ Reload
-                </button>
-                <a class="btn" href="${escapeHtml(p.shareUrl)}" target="_blank" rel="noopener">
-                  ↗ Open project page
-                </a>
-              </div>
-
-              <div class="finePrint">
-                If the project area is blank, try Reload. If it still does not appear, open the project page.
-              </div>
-            </div>
-          </div>
-        `;
-
-        grid.appendChild(card);
-
-        const iframe = card.querySelector(`#${CSS.escape(iframeId)}`);
-        const overlay = card.querySelector(`#${CSS.escape(iframeId)}-overlay`);
-
-        if (iframe && overlay) {
-          setupIframeWithRetry(iframe, overlay);
-        }
-      }
-
-      // Stagger the start of each iframe load so CMU's embed endpoint isn't
-      // hit with all requests in parallel (which causes blank frames).
-      const iframes = grid.querySelectorAll('iframe[data-src]');
-      iframes.forEach((iframe, i) => {
-        setTimeout(() => {
-          if (iframe.getAttribute('src') === 'about:blank') {
-            iframe.setAttribute('src', iframe.dataset.src);
-          }
-        }, i * 350);
-      });
+    function displayNameFor(project) {
+      return `${project.first} ${project.lastInitial}.`;
     }
 
-    // Attach a load listener that hides the spinner, plus an auto-retry
-    // timer that reloads the iframe if it hasn't fired `load` in time.
-    // Retries up to 2 times before giving up and letting the user use Reload.
-    function setupIframeWithRetry(iframe, overlay) {
-      let loaded = false;
-      let attempts = 0;
-      const maxAttempts = 2;
-      const retryDelay = 4500;
+    function searchableText(project) {
+      return [
+        displayNameFor(project),
+        project.summary || '',
+        ...(project.howTo || [])
+      ].join(' ').toLowerCase();
+    }
 
-      const hideOverlay = () => overlay.classList.remove('show');
-      const showOverlay = () => overlay.classList.add('show');
+    function getVisibleProjects() {
+      const projects = showcase[activeUnit].projects || [];
+      const q = activeQuery.trim().toLowerCase();
 
-      iframe.addEventListener('load', () => {
-        // about:blank also fires load — ignore it.
-        if (iframe.getAttribute('src') === 'about:blank') return;
-        loaded = true;
-        hideOverlay();
-      });
-
-      function scheduleRetry() {
-        setTimeout(() => {
-          if (loaded) return;
-          if (attempts >= maxAttempts) {
-            hideOverlay(); // give up quietly; user can click Reload
-            return;
-          }
-          attempts++;
-          const src = iframe.dataset.src;
-          showOverlay();
-          iframe.setAttribute('src', 'about:blank');
-          setTimeout(() => iframe.setAttribute('src', src), 80);
-          scheduleRetry();
-        }, retryDelay);
+      if (!q) {
+        return projects;
       }
 
-      scheduleRetry();
+      return projects.filter(project => searchableText(project).includes(q));
+    }
+
+    function updateMeta(visibleCount, totalCount) {
+      resultMeta.textContent = activeQuery.trim()
+        ? `Showing ${visibleCount} of ${totalCount} projects`
+        : `${totalCount} projects`;
+    }
+
+    function updateSectionCopy() {
+      const config = showcase[activeUnit];
+      sectionTitle.textContent = config.label;
+      sectionDescription.textContent = config.description;
+      pdfSubtitle.textContent = `${config.label} writeup`;
+    }
+
+    function setActiveTab(unitKey) {
+      activeUnit = unitKey;
+      tabs.querySelectorAll('.tab').forEach(tab => {
+        const isActive = tab.dataset.unit === unitKey;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      render();
+    }
+
+    function buildPdfButtons(project, displayName) {
+      if (!project.pdf) {
+        return `
+          <button class="btn disabled" type="button" disabled>📄 PDF coming soon</button>
+          <span class="smallNote">${escapeHtml(project.pdfNote || 'PDF not linked yet')}</span>
+        `;
+      }
+
+      return `
+        <button class="btn good" type="button" data-action="view-pdf" data-pdf="${escapeHtml(project.pdf)}" data-title="${escapeHtml(displayName)}">
+          📄 View PDF
+        </button>
+        <a class="btn" href="${escapeHtml(project.pdf)}" target="_blank" rel="noopener">
+          ↗ Open PDF
+        </a>
+      `;
+    }
+
+    function buildCard(project, unitKey) {
+      const displayName = displayNameFor(project);
+      const iframeId = `game-${unitKey}-${slugify(displayName)}`;
+      const badgeClass = unitKey === 'unit6' ? 'unit6' : 'unit4';
+      const badgeText = unitKey === 'unit6' ? 'Unit 6' : 'Unit 4';
+      const finePrint = project.pdf
+        ? 'If the project area is blank, try Reload. If it still does not appear, open the project page.'
+        : 'If the project area is blank, try Reload. The project page is still available even when a PDF is not linked yet.';
+
+      const card = document.createElement('section');
+      card.className = 'card';
+
+      card.innerHTML = `
+        <div class="cardHeader">
+          <div class="nameRow">
+            <h2 class="studentName">${escapeHtml(displayName)}</h2>
+            <span class="badge ${badgeClass}">${escapeHtml(badgeText)}</span>
+          </div>
+          <p class="summary">${escapeHtml(project.summary || '')}</p>
+        </div>
+
+        <div class="cardBody">
+          <div class="howto">
+            <h4>How to interact</h4>
+            <ul>
+              ${(project.howTo || []).map(item => `<li>${escapeHtml(item)}</li>`).join('')}
+            </ul>
+            <div style="height: 10px"></div>
+            <div class="buttons">
+              ${buildPdfButtons(project, displayName)}
+            </div>
+          </div>
+
+          <div class="embedBlock">
+            <div class="embedShell">
+              <div class="embedOverlay show" id="${iframeId}-overlay" aria-hidden="true">
+                <div class="embedOverlayText">
+                  <div class="spinner"></div>
+                  <p>Loading preview when this card comes into view.</p>
+                </div>
+              </div>
+              <iframe
+                id="${iframeId}"
+                title="${escapeHtml(displayName)} project"
+                src="about:blank"
+                data-src="${escapeHtml(project.embedUrl)}"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <div class="buttons">
+              <button class="btn primary" type="button" data-action="reload" data-iframe="${iframeId}">
+                ⟳ Reload
+              </button>
+              <a class="btn" href="${escapeHtml(project.shareUrl)}" target="_blank" rel="noopener">
+                ↗ Open project page
+              </a>
+            </div>
+
+            <div class="finePrint">${escapeHtml(finePrint)}</div>
+          </div>
+        </div>
+      `;
+
+      const iframe = card.querySelector(`#${CSS.escape(iframeId)}`);
+      const overlay = card.querySelector(`#${CSS.escape(iframeId)}-overlay`);
+
+      if (iframe && overlay) {
+        iframe.addEventListener('load', () => overlay.classList.remove('show'));
+      }
+
+      return card;
+    }
+
+    function attachObserver() {
+      if (observer) {
+        observer.disconnect();
+      }
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const iframe = entry.target;
+          ensureIframeLoaded(iframe.id);
+          observer.unobserve(iframe);
+        });
+      }, {
+        rootMargin: '500px 0px',
+        threshold: 0.01
+      });
+
+      grid.querySelectorAll('iframe[data-src]').forEach(iframe => observer.observe(iframe));
+    }
+
+    function ensureIframeLoaded(iframeId) {
+      const iframe = document.getElementById(iframeId);
+      const overlay = document.getElementById(`${iframeId}-overlay`);
+      if (!iframe) return;
+
+      const src = iframe.dataset.src;
+      if (!src) return;
+
+      if (iframe.dataset.loaded === 'true') {
+        return;
+      }
+
+      if (overlay) {
+        overlay.classList.add('show');
+      }
+
+      iframe.dataset.loaded = 'true';
+      iframe.setAttribute('src', src);
+
+      setTimeout(() => {
+        if (overlay) {
+          overlay.classList.remove('show');
+        }
+      }, 3000);
+    }
+
+    function render() {
+      updateSectionCopy();
+      grid.innerHTML = '';
+
+      const allProjects = showcase[activeUnit].projects || [];
+      const visibleProjects = getVisibleProjects();
+
+      updateMeta(visibleProjects.length, allProjects.length);
+
+      if (visibleProjects.length === 0) {
+        grid.innerHTML = `
+          <div class="emptyState">
+            No projects match this search yet. Try a student name, a project type, or an interaction word like
+            <strong>quiz</strong>, <strong>pong</strong>, <strong>space</strong>, or <strong>maze</strong>.
+          </div>
+        `;
+        return;
+      }
+
+      for (const project of visibleProjects) {
+        grid.appendChild(buildCard(project, activeUnit));
+      }
+
+      attachObserver();
     }
 
     function reloadGame(iframeId) {
       const iframe = document.getElementById(iframeId);
+      const overlay = document.getElementById(`${iframeId}-overlay`);
       if (!iframe) return;
       const src = iframe.dataset.src || iframe.getAttribute('src');
       if (!src) return;
+
+      iframe.dataset.loaded = 'true';
+      if (overlay) {
+        overlay.classList.add('show');
+      }
+
       iframe.setAttribute('src', 'about:blank');
       setTimeout(() => iframe.setAttribute('src', src), 60);
+      setTimeout(() => {
+        if (overlay) {
+          overlay.classList.remove('show');
+        }
+      }, 3000);
     }
 
     function openPdf(pdfPath, title) {
       pdfTitle.textContent = `${title} — PDF`;
+      pdfSubtitle.textContent = `${showcase[activeUnit].label} writeup`;
       pdfOpenNew.href = pdfPath;
+
       const hint = pdfPath.includes('#') ? '' : '#view=FitH';
       pdfFrame.src = pdfPath + hint;
+
       pdfBackdrop.classList.add('show');
       pdfBackdrop.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -893,34 +1128,44 @@
       document.body.style.overflow = '';
     }
 
-    // Tab switching
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        render(tab.dataset.unit);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+    tabs.addEventListener('click', (event) => {
+      const button = event.target.closest('.tab');
+      if (!button) return;
+      setActiveTab(button.dataset.unit);
     });
 
-    // Initial render — Unit 6 by default
-    render('6');
+    searchInput.addEventListener('input', () => {
+      activeQuery = searchInput.value || '';
+      render();
+    });
 
-    document.addEventListener('click', (e) => {
-      const t = e.target.closest('[data-action]');
-      if (!t) return;
-      if (t.dataset.action === 'reload') reloadGame(t.dataset.iframe);
-      if (t.dataset.action === 'view-pdf') openPdf(t.dataset.pdf, t.dataset.title);
+    document.addEventListener('click', (event) => {
+      const target = event.target.closest('[data-action]');
+      if (!target) return;
+
+      if (target.dataset.action === 'reload') {
+        reloadGame(target.dataset.iframe);
+      }
+
+      if (target.dataset.action === 'view-pdf') {
+        openPdf(target.dataset.pdf, target.dataset.title);
+      }
     });
 
     pdfClose.addEventListener('click', closePdf);
-    pdfBackdrop.addEventListener('click', (e) => {
-      if (e.target === pdfBackdrop) closePdf();
+    pdfBackdrop.addEventListener('click', (event) => {
+      if (event.target === pdfBackdrop) {
+        closePdf();
+      }
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && pdfBackdrop.classList.contains('show')) closePdf();
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && pdfBackdrop.classList.contains('show')) {
+        closePdf();
+      }
     });
+
+    render();
   </script>
 </body>
 </html>
