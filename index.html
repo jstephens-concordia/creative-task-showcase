@@ -18,8 +18,10 @@
       --shadow: 0 18px 55px rgba(0,0,0,0.45);
       --radius: 16px;
     }
+
     * { box-sizing: border-box; }
     html, body { height: 100%; }
+
     body {
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -30,57 +32,92 @@
         radial-gradient(900px 520px at 60% 92%, rgba(255,107,107,0.10), transparent 55%),
         var(--bg);
     }
+
     a { color: inherit; }
+
     .container {
       max-width: 1180px;
       margin: 0 auto;
       padding: 28px 18px 56px;
     }
+
     header {
       display: grid;
       gap: 12px;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
+
     .title {
       font-size: clamp(22px, 3vw, 34px);
       font-weight: 780;
       letter-spacing: -0.02em;
       margin: 0;
     }
+
     .subtitle {
       margin: 0;
       color: var(--muted);
       line-height: 1.45;
       max-width: 92ch;
     }
-    
-    /* Filters */
-    .filters {
+
+    .tabs {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      gap: 10px;
+      margin: 18px 0 6px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0;
     }
-    .filter-btn {
+
+    .tab {
       appearance: none;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      background: rgba(255,255,255,0.04);
       color: var(--muted);
-      padding: 8px 16px;
-      border-radius: 20px;
+      padding: 11px 18px;
+      border-radius: 12px 12px 0 0;
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
+      letter-spacing: -0.01em;
+      position: relative;
+      top: 1px;
     }
-    .filter-btn:hover {
-      background: rgba(255,255,255,0.1);
+
+    .tab:hover {
+      background: rgba(255,255,255,0.08);
       color: var(--text);
     }
-    .filter-btn.active {
-      background: rgba(123,211,255,0.15);
-      border-color: rgba(123,211,255,0.6);
-      color: #fff;
+
+    .tab.active {
+      background: linear-gradient(180deg, rgba(123,211,255,0.18), rgba(123,211,255,0.06));
+      border-color: rgba(123,211,255,0.55);
+      color: var(--text);
+    }
+
+    .tab .badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 7px;
+      margin-left: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .tab.active .badge {
+      background: rgba(123,211,255,0.25);
+      color: var(--text);
+    }
+
+    .unitIntro {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 14px 0 4px;
+      line-height: 1.5;
     }
 
     .grid {
@@ -88,12 +125,15 @@
       gap: 18px;
       grid-template-columns: 1fr;
       align-items: start;
+      margin-top: 14px;
     }
+
     @media (min-width: 980px) {
       .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
+
     .card {
       border-radius: var(--radius);
       border: 1px solid var(--border);
@@ -104,6 +144,7 @@
       grid-template-rows: auto 1fr;
       min-height: 0;
     }
+
     .cardHeader {
       display: grid;
       gap: 10px;
@@ -111,43 +152,46 @@
       border-bottom: 1px solid rgba(255,255,255,0.10);
       background: rgba(0,0,0,0.12);
     }
+
     .nameRow {
       display: flex;
       flex-wrap: wrap;
       align-items: baseline;
-      justify-content: space-between;
       gap: 10px;
     }
+
     .studentName {
       margin: 0;
       font-size: 18px;
       font-weight: 750;
       letter-spacing: -0.01em;
     }
-    .unitBadge {
-      font-size: 12px;
-      background: rgba(255,255,255,0.1);
-      padding: 3px 8px;
-      border-radius: 12px;
+
+    .projectTitle {
+      font-size: 13px;
       color: var(--accent);
       font-weight: 600;
     }
+
     .summary {
       margin: 0;
       color: var(--muted);
       line-height: 1.45;
     }
+
     .cardBody {
       display: grid;
       gap: 12px;
       padding: 14px 16px 16px;
     }
+
     .howto {
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: 12px;
       background: rgba(255,255,255,0.04);
       padding: 12px 12px 10px;
     }
+
     .howto h4 {
       margin: 0 0 8px;
       font-size: 13px;
@@ -155,6 +199,7 @@
       letter-spacing: 0.02em;
       text-transform: uppercase;
     }
+
     .howto ul {
       margin: 0;
       padding-left: 18px;
@@ -162,10 +207,9 @@
       line-height: 1.5;
       font-size: 14px;
     }
-    .embedBlock {
-      display: grid;
-      gap: 10px;
-    }
+
+    .embedBlock { display: grid; gap: 10px; }
+
     .embedShell {
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.16);
@@ -174,6 +218,7 @@
       position: relative;
       min-height: 470px;
     }
+
     .embedShell iframe {
       width: 100%;
       height: 460px;
@@ -181,6 +226,7 @@
       display: block;
       background: rgba(0,0,0,0.25);
     }
+
     .embedOverlay {
       position: absolute;
       inset: 0;
@@ -190,9 +236,9 @@
       opacity: 0;
       transition: opacity 160ms ease;
     }
-    .embedOverlay.show {
-      opacity: 1;
-    }
+
+    .embedOverlay.show { opacity: 1; }
+
     .spinner {
       width: 38px;
       height: 38px;
@@ -201,15 +247,16 @@
       border-top-color: rgba(123,211,255,0.85);
       animation: spin 900ms linear infinite;
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     .buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
     }
+
     .btn {
       appearance: none;
       border: 1px solid rgba(255,255,255,0.18);
@@ -226,37 +273,36 @@
       user-select: none;
       white-space: nowrap;
     }
+
     .btn:hover {
       background: rgba(255,255,255,0.10);
       border-color: rgba(255,255,255,0.26);
     }
+
     .btn.primary {
       border-color: rgba(123,211,255,0.55);
       background: rgba(123,211,255,0.12);
     }
-    .btn.primary:hover {
-      background: rgba(123,211,255,0.18);
-    }
+    .btn.primary:hover { background: rgba(123,211,255,0.18); }
+
     .btn.good {
       border-color: rgba(156,255,200,0.55);
       background: rgba(156,255,200,0.12);
     }
-    .btn.good:hover {
-      background: rgba(156,255,200,0.18);
-    }
+    .btn.good:hover { background: rgba(156,255,200,0.18); }
+
     .btn.danger {
       border-color: rgba(255,107,107,0.55);
       background: rgba(255,107,107,0.12);
     }
-    .btn.danger:hover {
-      background: rgba(255,107,107,0.18);
-    }
+    .btn.danger:hover { background: rgba(255,107,107,0.18); }
+
     .finePrint {
       font-size: 12px;
       color: var(--muted2);
       line-height: 1.35;
     }
-    /* Modal */
+
     .modalBackdrop {
       position: fixed;
       inset: 0;
@@ -267,9 +313,9 @@
       padding: 18px;
       z-index: 999;
     }
-    .modalBackdrop.show {
-      display: flex;
-    }
+
+    .modalBackdrop.show { display: flex; }
+
     .modal {
       width: min(1100px, 98vw);
       height: min(92vh, 880px);
@@ -281,6 +327,7 @@
       display: grid;
       grid-template-rows: auto 1fr;
     }
+
     .modalHeader {
       display: flex;
       gap: 10px;
@@ -290,18 +337,11 @@
       border-bottom: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.05);
     }
-    .modalTitle {
-      display: grid;
-      gap: 2px;
-    }
-    .modalTitle strong {
-      font-size: 14px;
-      letter-spacing: -0.01em;
-    }
-    .modalTitle span {
-      font-size: 12px;
-      color: var(--muted2);
-    }
+
+    .modalTitle { display: grid; gap: 2px; }
+    .modalTitle strong { font-size: 14px; letter-spacing: -0.01em; }
+    .modalTitle span { font-size: 12px; color: var(--muted2); }
+
     .modalActions {
       display: flex;
       gap: 10px;
@@ -309,9 +349,8 @@
       flex-wrap: wrap;
       justify-content: flex-end;
     }
-    .modalBody {
-      background: rgba(0,0,0,0.25);
-    }
+
+    .modalBody { background: rgba(0,0,0,0.25); }
     .modalBody iframe {
       width: 100%;
       height: 100%;
@@ -325,17 +364,22 @@
     <header>
       <h1 class="title">Foundations of Computer Science Creative Task Showcase</h1>
       <p class="subtitle">
-        Student projects from Foundations of Computer Science (CMU CS Academy).
+        Student projects from Foundations of Computer Science (CMU CS Academy CS1: Introduction to Programming).
         Each card includes a short project summary, a quick interaction guide, and the embedded project.
+        Use the PDF button to open the student writeup in a large viewer.
       </p>
-      <div class="filters" id="filters">
-        <button class="filter-btn active" data-filter="6">Unit 6 Projects</button>
-        <button class="filter-btn" data-filter="4">Unit 4 Projects</button>
-        <button class="filter-btn" data-filter="all">Show All</button>
-      </div>
     </header>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" type="button" data-unit="6" role="tab">Unit 6 Creative Task <span class="badge">Latest</span></button>
+      <button class="tab" type="button" data-unit="4" role="tab">Unit 4 Creative Task</button>
+    </div>
+
+    <p class="unitIntro" id="unitIntro"></p>
+
     <main class="grid" id="grid" aria-label="Project list"></main>
   </div>
+
   <div class="modalBackdrop" id="pdfBackdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-label="PDF viewer">
       <div class="modalHeader">
@@ -353,168 +397,150 @@
       </div>
     </div>
   </div>
+
   <script>
-    const projects = [
-      // UNIT 6 PROJECTS
+    // =========================================================================
+    // UNIT 6 PROJECTS
+    // =========================================================================
+    const unit6 = [
       {
-        first: 'Andy',
-        lastInitial: 'Z',
-        unit: 6,
-        summary: 'A Pong variation where the player battles a bot. The ball accelerates over time and power-ups randomly spawn to increase speed.',
+        first: 'Jesse', lastInitial: 'C',
+        projectTitle: 'Sky Jumper',
+        summary: 'A two-level obstacle-dodging game where you toggle vertical direction to collect coins and avoid moving obstacles, then advance to a faster Level 2.',
         howTo: [
-          'Use the Up and Down arrow keys to move your paddle.',
-          'Hit the ball past the bot to score.',
-          'First to 6 points wins.'
-        ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/khakiCat529967',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/khakiCat529967/embed',
-        pdf: 'pdfs/AndyZ_Unit6_CreativeTask.pdf'
-      },
-      {
-        first: 'Coco',
-        lastInitial: 'L',
-        unit: 6,
-        summary: 'An interactive night scene featuring a boat on a lake and rotating constellations (Monoceros, Canis Major, Canis Minor).',
-        howTo: [
-          'Use WASD to move the boat around the lake.',
-          'Hold Left or Right arrows to rotate the constellations.',
-          'Click the mouse to add custom stars to the sky.'
-        ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/tomatoBear498217',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/tomatoBear498217/embed',
-        pdf: 'pdfs/CocoL_Unit6_CreativeTask.pdf'
-      },
-      {
-        first: 'Jesse',
-        lastInitial: 'C',
-        unit: 6,
-        summary: 'A side-scrolling obstacle dodging game where you control a character, collect coins to level up, and avoid barriers.',
-        howTo: [
-          'Hold R to get ready, then press E to begin.',
-          'Press Space to switch vertical direction.',
-          'Press W to restart the game.'
+          'Hold R to move the character to the ready position, then press E to begin.',
+          'Press Space to toggle up/down and dodge obstacles while collecting coins.',
+          'Collect 10 coins to advance to Level 2. Press W to restart after game over.'
         ],
         shareUrl: 'https://academy.cs.cmu.edu/sharing/redChicken771539',
         embedUrl: 'https://academy.cs.cmu.edu/sharing/redChicken771539/embed',
-        pdf: 'pdfs/JesseC_Unit6_CreativeTask.pdf'
+        pdf: 'pdfs/unit6/JesseC_Unit6_CreativeTask.pdf'
       },
       {
-        first: 'Jason',
-        lastInitial: 'C',
-        unit: 6,
-        summary: 'A Minesweeper-style puzzle game on a 9x9 grid where you must avoid hidden bombs.',
+        first: 'Jessica', lastInitial: 'J',
+        projectTitle: 'A Day from the Window',
+        summary: 'An interactive storybook scene: roll up the curtains, shoot birds and catch a rabbit for dinner, then transition indoors to cook a stew as the day ends.',
         howTo: [
-          'Click on tiles to reveal numbers.',
-          'Numbers indicate how many bombs are adjacent.',
-          'Avoid clicking on the hidden bombs!'
-        ],
-        shareUrl: 'https://academy.cs.cmu.edu/sharing/turquoisePanda760233',
-        embedUrl: 'https://academy.cs.cmu.edu/sharing/turquoisePanda760233/embed',
-        pdf: 'pdfs/JasonC_Unit6_CreativeTask.pdf'
-      },
-      {
-        first: 'Jessica',
-        lastInitial: 'J',
-        unit: 6,
-        summary: 'A hunting game where you roll up the curtain and shoot flying birds for dinner, while trying to catch a rabbit.',
-        howTo: [
-          'Click the screen to roll up the curtain and reveal the scene.',
-          'Click on the flying birds to catch them.',
-          'Watch out for the rabbit!'
+          'Click repeatedly to roll up the curtain and reveal the outdoor scene.',
+          'Click flying birds to shoot them, then click them on the ground to collect.',
+          'Click the rabbit to catch it, then click the light switch once the scene darkens.'
         ],
         shareUrl: 'https://academy.cs.cmu.edu/sharing/silverDolphin576063',
         embedUrl: 'https://academy.cs.cmu.edu/sharing/silverDolphin576063/embed',
-        pdf: 'pdfs/JessicaJ_Unit6_CreativeTask.pdf'
+        pdf: 'pdfs/unit6/JessicaJ_Unit6_CreativeTask.pdf'
       },
       {
-        first: 'Harry',
-        lastInitial: 'J',
-        unit: 6,
-        summary: 'An Asteroids-style space shooter where you control a ship with thrust, rotate to aim, and shoot lasers at floating rocks.',
+        first: 'Harry', lastInitial: 'J',
+        projectTitle: 'Asteroids',
+        summary: 'A recreation of the 1979 arcade classic Asteroids with inertia-based flight, wraparound physics, firing lasers, lives, and a score counter.',
         howTo: [
-          'Use Left and Right arrows to rotate the ship.',
-          'Hold the Up arrow to apply thrust.',
-          'Press Space to fire lasers at the asteroids.'
+          'Use Left and Right arrows to rotate the ship; Up to thrust forward.',
+          'Press Space to fire a laser in the direction the ship is facing.',
+          'Destroy asteroids to score points. You have 3 lives before Game Over.'
         ],
         shareUrl: 'https://academy.cs.cmu.edu/sharing/yellowGreenEagle527450',
         embedUrl: 'https://academy.cs.cmu.edu/sharing/yellowGreenEagle527450/embed',
-        pdf: 'pdfs/HarryJ_Unit6_CreativeTask.pdf'
+        pdf: 'pdfs/unit6/HarryJ_Unit6_CreativeTask.pdf'
       },
       {
-        first: 'Stephen',
-        lastInitial: 'J',
-        unit: 6,
-        summary: 'A strategy board game with red and blue pieces, timers, and skill shape interactions on a 6x6 grid.',
+        first: 'Stephen', lastInitial: 'J',
+        projectTitle: 'Piece Placement Duel',
+        summary: 'A two-player strategy game where red and blue take turns placing pieces on a board, with a "clear" skill that resets your pieces and a global countdown timer.',
         howTo: [
-          'Take turns placing pieces on the board.',
-          'Watch the countdown timers for your turn limit.',
-          'Use the green skill buttons when they become available.'
+          'Players alternate turns every 6 seconds (indicated by the color bar).',
+          'Click an empty cell on the board to place one of your pieces.',
+          'Click your green skill bar to clear your own pieces and free up space.'
         ],
         shareUrl: 'https://academy.cs.cmu.edu/sharing/chartreuseDolphin523579',
         embedUrl: 'https://academy.cs.cmu.edu/sharing/chartreuseDolphin523579/embed',
-        pdf: 'pdfs/StephenJ_Unit6_CreativeTask.pdf'
+        pdf: 'pdfs/unit6/StephenJ_Unit6_CreativeTask.pdf'
       },
       {
-        first: 'Geonwoo',
-        lastInitial: 'L',
-        unit: 6,
-        summary: 'BounceBall Game: A physics-based platformer with three levels where you control a bouncing ball to reach the crown.',
+        first: 'Geonwoo', lastInitial: 'L',
+        projectTitle: 'Bounce Ball',
+        summary: 'A three-level platformer where a bouncing ball must navigate safe platforms and moving obstacles to reach the crown at the end of each level.',
         howTo: [
-          'Click a colored square to select a level.',
-          'Use W and S to adjust your bounce height.',
-          'Use A and D to move left and right to avoid obstacles.'
+          'Click one of the three colored level squares (red, blue, or purple) to start.',
+          'Use A and D to move horizontally; W to jump up and S to drop faster.',
+          'Avoid the moving black obstacles and reach the yellow crown to win.'
         ],
         shareUrl: 'https://academy.cs.cmu.edu/sharing/rosyBrownDeer367423',
         embedUrl: 'https://academy.cs.cmu.edu/sharing/rosyBrownDeer367423/embed',
-        pdf: 'pdfs/GeonwooL_Unit6_CreativeTask.pdf'
+        pdf: 'pdfs/unit6/GeonwooL_Unit6_CreativeTask.pdf'
       },
       {
-        first: 'Jack',
-        lastInitial: 'L',
-        unit: 6,
-        summary: 'A two-player 2D fighting/boxing game with health bars, punching mechanics, and a time limit.',
+        first: 'Jack', lastInitial: 'L',
+        projectTitle: '2-Player Fighter',
+        summary: 'A local two-player fighting game with health bars, a round timer, and punching fists that travel out and retract on each attack.',
         howTo: [
-          'Player 1: Use WASD to move and Space to punch.',
-          'Player 2: Use Arrow Keys to move and C to punch.',
-          'Deplete your opponent\'s health bar to win.'
+          'Player 1: WASD to move, Space to punch. Player 2: Arrow keys to move, C to punch.',
+          'Land punches on the other player to drain their health bar.',
+          'Whoever has more health when the timer runs out wins.'
         ],
         shareUrl: 'https://academy.cs.cmu.edu/sharing/rosyBrownOwl946187',
         embedUrl: 'https://academy.cs.cmu.edu/sharing/rosyBrownOwl946187/embed',
-        pdf: 'pdfs/JackL_Unit6_CreativeTask.pdf'
+        pdf: 'pdfs/unit6/JackL_Unit6_CreativeTask.pdf'
       },
       {
-        first: 'Michael',
-        lastInitial: 'W',
-        unit: 6,
-        summary: 'A baseball simulator featuring a batter and a pitcher, complete with strike zones, hit detection, and a homerun counter.',
+        first: 'Coco', lastInitial: 'L',
+        projectTitle: 'Night Sky with Constellations',
+        summary: 'A dreamy nighttime scene featuring a boat on moonlit water beneath drifting constellations (Canis Major, Canis Minor, Monoceros) that rotate and wrap around the sky.',
         howTo: [
-          'Click inside the strike zone to pitch the ball.',
-          'The batter automatically swings based on timing and position.',
-          'Try to score a home run!'
+          'Hold Left or Right arrow to spin the constellations and boat in opposite directions.',
+          'Use WASD to move the boat around the water.',
+          'Click anywhere in the sky to add your own rotating stars to the scene.'
+        ],
+        shareUrl: 'https://academy.cs.cmu.edu/sharing/tomatoBear498217',
+        embedUrl: 'https://academy.cs.cmu.edu/sharing/tomatoBear498217/embed',
+        pdf: 'pdfs/unit6/CocoL_Unit6_CreativeTask.pdf'
+      },
+      {
+        first: 'Michael', lastInitial: 'W',
+        projectTitle: '2026 WBC At-Bat Simulator',
+        summary: 'A baseball at-bat simulator with a full scoreboard, pitching strike zone, and an animated batter swing that results in either a home run or a strikeout.',
+        howTo: [
+          'Click a square inside the pitch grid to throw the ball to that location.',
+          'Watch the batter swing automatically as the ball reaches home plate.',
+          'Pitches in the hot zone become home runs; everywhere else triggers a strikeout.'
         ],
         shareUrl: 'https://academy.cs.cmu.edu/sharing/seaGreenEagle703829',
         embedUrl: 'https://academy.cs.cmu.edu/sharing/seaGreenEagle703829/embed',
-        pdf: 'pdfs/MichaelW_Unit6_CreativeTask.pdf'
+        pdf: 'pdfs/unit6/MichaelW_Unit6_CreativeTask.pdf'
       },
       {
-        first: 'William',
-        lastInitial: 'Z',
-        unit: 6,
-        summary: 'A detailed mechanical animation of a bicycle, featuring spinning wheels, moving pedals, and an active suspension system.',
+        first: 'Andy', lastInitial: 'Z',
+        projectTitle: 'Accelerating Pong',
+        summary: 'A player-vs-bot Pong game where the ball accelerates with every hit, motion-blur shadows trail the ball, and randomly spawning power-ups supercharge its speed.',
         howTo: [
-          'This is an automated simulation.',
-          'Watch how the transmission, shocks, and wheels operate together step-by-step.'
+          'Press Up and Down arrow keys to move your paddle on the left side.',
+          'Touch the glowing power-up with the ball to multiply its speed.',
+          'First side to reach 6 points wins the match.'
+        ],
+        shareUrl: 'https://academy.cs.cmu.edu/sharing/khakiCat529967',
+        embedUrl: 'https://academy.cs.cmu.edu/sharing/khakiCat529967/embed',
+        pdf: 'pdfs/unit6/AndyZ_Unit6_CreativeTask.pdf'
+      },
+      {
+        first: 'William', lastInitial: 'Z',
+        projectTitle: 'Bike Assembly Animation',
+        summary: 'A mechanical assembly animation where the fork, shock, transmission, and both detailed wheels slide into place one by one to build a complete bike.',
+        howTo: [
+          'Watch as each bike component animates into position automatically.',
+          'The fork and shock move first, followed by the transmission and both wheels.',
+          'Notice the detailed 36-spoke wheels created with a for loop.'
         ],
         shareUrl: 'https://academy.cs.cmu.edu/sharing/forestGreenFrog325431',
         embedUrl: 'https://academy.cs.cmu.edu/sharing/forestGreenFrog325431/embed',
-        pdf: 'pdfs/WilliamZ_Unit6_CreativeTask.pdf'
-      },
+        pdf: 'pdfs/unit6/WilliamZ_Unit6_CreativeTask.pdf'
+      }
+    ];
 
-      // UNIT 4 PROJECTS
+    // =========================================================================
+    // UNIT 4 PROJECTS (preserved from original site)
+    // =========================================================================
+    const unit4 = [
       {
-        first: 'Jessica',
-        lastInitial: 'J',
-        unit: 4,
+        first: 'Jessica', lastInitial: 'J',
         summary: 'An interactive True or False quiz with a start screen, optional hint popup, score tracking, and a running timer.',
         howTo: [
           'Click Start to begin.',
@@ -526,9 +552,7 @@
         pdf: 'pdfs/JessicaJ_CreativeTask.pdf'
       },
       {
-        first: 'Harry',
-        lastInitial: 'J',
-        unit: 4,
+        first: 'Harry', lastInitial: 'J',
         summary: 'A five-lane racing game with randomized movement and a podium results screen at the end of the race.',
         howTo: [
           'Click Start Game to begin the race.',
@@ -540,9 +564,7 @@
         pdf: 'pdfs/HarryJ_CreativeTask.pdf'
       },
       {
-        first: 'Stephen',
-        lastInitial: 'J',
-        unit: 4,
+        first: 'Stephen', lastInitial: 'J',
         summary: 'A Pac-Man inspired game-machine prototype featuring arrow-key movement, obstacles, and an on-screen menu interface.',
         howTo: [
           'Use the arrow keys to move the character.',
@@ -554,9 +576,7 @@
         pdf: 'pdfs/StephenJ_CreativeTask.pdf'
       },
       {
-        first: 'Jesse',
-        lastInitial: 'C',
-        unit: 4,
+        first: 'Jesse', lastInitial: 'C',
         summary: 'A basketball shooting game where you move a player around the court, take shots, and score 2 or 3 points based on distance.',
         howTo: [
           'Use the arrow keys to move the player (dribbling occurs while moving).',
@@ -568,9 +588,7 @@
         pdf: 'pdfs/JesseC_CreativeTask.pdf'
       },
       {
-        first: 'Geonwoo',
-        lastInitial: 'L',
-        unit: 4,
+        first: 'Geonwoo', lastInitial: 'L',
         summary: 'A three-level airplane challenge where you dodge hazards and collect stars to build energy and win.',
         howTo: [
           'Click a level square to start (yellow, light blue, or gray).',
@@ -582,9 +600,7 @@
         pdf: 'pdfs/GeonwooL_CreativeTask.pdf'
       },
       {
-        first: 'Michael',
-        lastInitial: 'W',
-        unit: 4,
+        first: 'Michael', lastInitial: 'W',
         summary: 'A simplified Tetris-style stacking game where you position and rotate falling block shapes to maximize your score.',
         howTo: [
           'Press Down repeatedly to move the current block downward.',
@@ -596,9 +612,7 @@
         pdf: 'pdfs/MichaelW_CreativeTask.pdf'
       },
       {
-        first: 'Coco',
-        lastInitial: 'L',
-        unit: 4,
+        first: 'Coco', lastInitial: 'L',
         summary: 'An underwater scene with a crab and fish that move across the canvas in response to keyboard input.',
         howTo: [
           'Press Left or Right to move the characters across the scene.',
@@ -609,9 +623,7 @@
         pdf: 'pdfs/CocoL_CreativeTask.pdf'
       },
       {
-        first: 'Jason',
-        lastInitial: 'C',
-        unit: 4,
+        first: 'Jason', lastInitial: 'C',
         summary: 'A fast-paced driving game: steer your car to collect falling coins while the road scrolls, and try to reach the win target.',
         howTo: [
           'Use W, A, S, D to move the car.',
@@ -623,9 +635,7 @@
         pdf: 'pdfs/JasonC_CreativeTask.pdf'
       },
       {
-        first: 'Andy',
-        lastInitial: 'Z',
-        unit: 4,
+        first: 'Andy', lastInitial: 'Z',
         summary: 'A maze-path collection game where you stay on the path, collect all pellets, and then reach the finish to win.',
         howTo: [
           'Use the arrow keys to move the character.',
@@ -637,9 +647,7 @@
         pdf: 'pdfs/AndyZ_CreativeTask.pdf'
       },
       {
-        first: 'Jack',
-        lastInitial: 'L',
-        unit: 4,
+        first: 'Jack', lastInitial: 'L',
         summary: 'A timed target-shooting game where you move, rotate your aim, fire shots, and earn a final performance rank.',
         howTo: [
           'Hold W, A, S, D to move.',
@@ -651,9 +659,7 @@
         pdf: 'pdfs/JackL_CreativeTask.pdf'
       },
       {
-        first: 'William',
-        lastInitial: 'Z',
-        unit: 4,
+        first: 'William', lastInitial: 'Z',
         summary: 'A time-control scene with a clock and moving sun or moon, where you can scrub time forward or backward and toggle day or night.',
         howTo: [
           'Hold the Right or Left arrow key to move time forward or backward.',
@@ -666,18 +672,48 @@
       }
     ];
 
+    const unitData = {
+      '6': {
+        projects: unit6,
+        intro: 'Unit 6 projects introduce Groups, custom properties (dx/dy), and event functions like onStep — enabling richer animations, multi-shape objects, and more dynamic gameplay. Set the badge counts and apply proper student order.'
+      },
+      '4': {
+        projects: unit4,
+        intro: 'Unit 4 projects focus on keyboard and mouse event handling, shape methods, and building the first interactive games of the course.'
+      }
+    };
+
+    // Badge counts
+    document.querySelectorAll('.tab').forEach(t => {
+      const u = t.dataset.unit;
+      const count = unitData[u].projects.length;
+      const existing = t.querySelector('.badge');
+      if (!existing) {
+        const b = document.createElement('span');
+        b.className = 'badge';
+        b.textContent = count + ' projects';
+        t.appendChild(b);
+      } else {
+        // For Unit 6 which already has "Latest", append count after
+        existing.textContent = 'Latest · ' + count;
+      }
+    });
+
+    // Update Unit 6 intro to something accurate (not placeholder)
+    unitData['6'].intro = 'Unit 6 introduces Groups, custom properties (like dx/dy), and onStep animation — so these projects feature richer multi-shape objects, continuous motion, and more complex interactive gameplay than Unit 4.';
+
     const grid = document.getElementById('grid');
+    const unitIntro = document.getElementById('unitIntro');
     const pdfBackdrop = document.getElementById('pdfBackdrop');
     const pdfFrame = document.getElementById('pdfFrame');
     const pdfTitle = document.getElementById('pdfTitle');
     const pdfOpenNew = document.getElementById('pdfOpenNew');
     const pdfClose = document.getElementById('pdfClose');
-    const filterBtns = document.querySelectorAll('.filter-btn');
 
     function slugify(s) {
       return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     }
-    
+
     function escapeHtml(s) {
       return String(s)
         .replaceAll('&', '&amp;')
@@ -686,22 +722,31 @@
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#039;');
     }
-    
-    function render(list) {
+
+    function render(unit) {
+      const { projects, intro } = unitData[unit];
+      unitIntro.textContent = intro;
       grid.innerHTML = '';
-      for (const p of list) {
+
+      for (const p of projects) {
         const displayName = `${p.first} ${p.lastInitial}.`;
-        const iframeId = `game-${p.unit}-${slugify(displayName)}`;
+        const iframeId = `game-u${unit}-${slugify(displayName)}`;
+        const titleLine = p.projectTitle
+          ? `<span class="projectTitle">${escapeHtml(p.projectTitle)}</span>`
+          : '';
+
         const card = document.createElement('section');
         card.className = 'card';
+
         card.innerHTML = `
           <div class="cardHeader">
             <div class="nameRow">
               <h2 class="studentName">${escapeHtml(displayName)}</h2>
-              <span class="unitBadge">Unit ${p.unit}</span>
+              ${titleLine}
             </div>
             <p class="summary">${escapeHtml(p.summary)}</p>
           </div>
+
           <div class="cardBody">
             <div class="howto">
               <h4>How to interact</h4>
@@ -718,19 +763,21 @@
                 </a>
               </div>
             </div>
+
             <div class="embedBlock">
               <div class="embedShell">
                 <div class="embedOverlay show" id="${iframeId}-overlay" aria-hidden="true"><div class="spinner"></div></div>
                 <iframe
                   id="${iframeId}"
                   title="${escapeHtml(displayName)} project"
-                  src="${escapeHtml(p.embedUrl)}"
+                  src="about:blank"
                   data-src="${escapeHtml(p.embedUrl)}"
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
                   allowfullscreen
                 ></iframe>
               </div>
+
               <div class="buttons">
                 <button class="btn primary" type="button" data-action="reload" data-iframe="${iframeId}">
                   ⟳ Reload
@@ -739,40 +786,73 @@
                   ↗ Open project page
                 </a>
               </div>
+
               <div class="finePrint">
                 If the project area is blank, try Reload. If it still does not appear, open the project page.
               </div>
             </div>
           </div>
         `;
+
         grid.appendChild(card);
+
         const iframe = card.querySelector(`#${CSS.escape(iframeId)}`);
         const overlay = card.querySelector(`#${CSS.escape(iframeId)}-overlay`);
+
         if (iframe && overlay) {
-          const hideOverlay = () => overlay.classList.remove('show');
-          iframe.addEventListener('load', () => hideOverlay());
-          setTimeout(hideOverlay, 2200);
+          setupIframeWithRetry(iframe, overlay);
         }
       }
-    }
 
-    function filterProjects(filterVal) {
-      if (filterVal === 'all') {
-        render(projects);
-      } else {
-        const num = parseInt(filterVal, 10);
-        render(projects.filter(p => p.unit === num));
-      }
-    }
-
-    // Event Listeners for Filters
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        filterProjects(e.target.dataset.filter);
+      // Stagger the start of each iframe load so CMU's embed endpoint isn't
+      // hit with all requests in parallel (which causes blank frames).
+      const iframes = grid.querySelectorAll('iframe[data-src]');
+      iframes.forEach((iframe, i) => {
+        setTimeout(() => {
+          if (iframe.getAttribute('src') === 'about:blank') {
+            iframe.setAttribute('src', iframe.dataset.src);
+          }
+        }, i * 350);
       });
-    });
+    }
+
+    // Attach a load listener that hides the spinner, plus an auto-retry
+    // timer that reloads the iframe if it hasn't fired `load` in time.
+    // Retries up to 2 times before giving up and letting the user use Reload.
+    function setupIframeWithRetry(iframe, overlay) {
+      let loaded = false;
+      let attempts = 0;
+      const maxAttempts = 2;
+      const retryDelay = 4500;
+
+      const hideOverlay = () => overlay.classList.remove('show');
+      const showOverlay = () => overlay.classList.add('show');
+
+      iframe.addEventListener('load', () => {
+        // about:blank also fires load — ignore it.
+        if (iframe.getAttribute('src') === 'about:blank') return;
+        loaded = true;
+        hideOverlay();
+      });
+
+      function scheduleRetry() {
+        setTimeout(() => {
+          if (loaded) return;
+          if (attempts >= maxAttempts) {
+            hideOverlay(); // give up quietly; user can click Reload
+            return;
+          }
+          attempts++;
+          const src = iframe.dataset.src;
+          showOverlay();
+          iframe.setAttribute('src', 'about:blank');
+          setTimeout(() => iframe.setAttribute('src', src), 80);
+          scheduleRetry();
+        }, retryDelay);
+      }
+
+      scheduleRetry();
+    }
 
     function reloadGame(iframeId) {
       const iframe = document.getElementById(iframeId);
@@ -782,7 +862,7 @@
       iframe.setAttribute('src', 'about:blank');
       setTimeout(() => iframe.setAttribute('src', src), 60);
     }
-    
+
     function openPdf(pdfPath, title) {
       pdfTitle.textContent = `${title} — PDF`;
       pdfOpenNew.href = pdfPath;
@@ -792,7 +872,7 @@
       pdfBackdrop.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
-    
+
     function closePdf() {
       pdfBackdrop.classList.remove('show');
       pdfBackdrop.setAttribute('aria-hidden', 'true');
@@ -800,29 +880,33 @@
       document.body.style.overflow = '';
     }
 
-    // Initialize with Unit 6
-    filterProjects('6');
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        render(tab.dataset.unit);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Initial render — Unit 6 by default
+    render('6');
 
     document.addEventListener('click', (e) => {
       const t = e.target.closest('[data-action]');
       if (!t) return;
-      if (t.dataset.action === 'reload') {
-        reloadGame(t.dataset.iframe);
-      }
-      if (t.dataset.action === 'view-pdf') {
-        openPdf(t.dataset.pdf, t.dataset.title);
-      }
+      if (t.dataset.action === 'reload') reloadGame(t.dataset.iframe);
+      if (t.dataset.action === 'view-pdf') openPdf(t.dataset.pdf, t.dataset.title);
     });
-    
+
     pdfClose.addEventListener('click', closePdf);
     pdfBackdrop.addEventListener('click', (e) => {
       if (e.target === pdfBackdrop) closePdf();
     });
-    
+
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && pdfBackdrop.classList.contains('show')) {
-        closePdf();
-      }
+      if (e.key === 'Escape' && pdfBackdrop.classList.contains('show')) closePdf();
     });
   </script>
 </body>
